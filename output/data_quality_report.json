@@ -1,0 +1,192 @@
+{
+  "files": {
+    "trial_balance_rows": 62,
+    "chart_of_accounts_rows": 72,
+    "prior_period_rows": 33,
+    "fx_rate_rows": 7,
+    "adjustment_entries": 10
+  },
+  "currencies_in_trial_balance": [
+    "EUR",
+    "GBP",
+    "USD"
+  ],
+  "functional_currency": "USD",
+  "finding_count": 11,
+  "findings_by_severity": {
+    "info": 1,
+    "low": 0,
+    "medium": 5,
+    "high": 5,
+    "error": 0
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "code": "TB_ACCOUNT_NOT_IN_COA",
+      "message": "Trial-balance accounts are missing from the current chart of accounts.",
+      "evidence": [
+        {
+          "account_code": "9999",
+          "account_name": "Suspense - Unmapped",
+          "currency": "USD",
+          "debit": 12400.0,
+          "credit": 0.0
+        }
+      ]
+    },
+    {
+      "severity": "medium",
+      "code": "DUPLICATE_TB_ACCOUNT_CURRENCY",
+      "message": "Multiple trial-balance rows share an account code and currency. Investigate whether rows should be aggregated or represent duplicate postings.",
+      "evidence": [
+        {
+          "account_code": "6310",
+          "currency": "USD",
+          "row_count": 2
+        }
+      ]
+    },
+    {
+      "severity": "info",
+      "code": "TB_TOTALS_BY_CURRENCY",
+      "message": "Raw debit and credit totals are reported by currency. Do not add currencies together; translate using the appropriate FX policy before a functional-currency balance check.",
+      "evidence": [
+        {
+          "currency": "EUR",
+          "debit": 825400.0,
+          "credit": 0.0,
+          "debit_minus_credit": 825400.0
+        },
+        {
+          "currency": "GBP",
+          "debit": 412300.0,
+          "credit": 0.0,
+          "debit_minus_credit": 412300.0
+        },
+        {
+          "currency": "USD",
+          "debit": 69834500.0,
+          "credit": 71077000.0,
+          "debit_minus_credit": -1242500.0
+        }
+      ]
+    },
+    {
+      "severity": "medium",
+      "code": "COA_HEADER_WITHOUT_CHILDREN",
+      "message": "Header nodes with no direct children need confirmation before statement roll-up.",
+      "evidence": [
+        {
+          "account_code": "1290",
+          "account_name": "Other Assets",
+          "parent_code": "1200",
+          "statement": "BS"
+        }
+      ]
+    },
+    {
+      "severity": "high",
+      "code": "COA_NON_HEADER_WITH_CHILDREN",
+      "message": "A non-header COA account also has children. Confirm posting/roll-up semantics to avoid double counting.",
+      "evidence": [
+        {
+          "account_code": "3300",
+          "account_name": "Accumulated OCI",
+          "account_type": "Equity",
+          "statement": "BS"
+        },
+        {
+          "account_code": "8000",
+          "account_name": "Income Tax Expense",
+          "account_type": "Expense",
+          "statement": "PL"
+        }
+      ]
+    },
+    {
+      "severity": "medium",
+      "code": "COA_CF_CATEGORY_TBD",
+      "message": "Cash-flow categories explicitly marked TBD require a policy decision or human review.",
+      "evidence": [
+        {
+          "account_code": "1150",
+          "account_name": "Other Current Assets",
+          "cf_category": "TBD",
+          "statement": "BS"
+        },
+        {
+          "account_code": "2170",
+          "account_name": "Intercompany Payable",
+          "cf_category": "TBD",
+          "statement": "BS"
+        }
+      ]
+    },
+    {
+      "severity": "medium",
+      "code": "PRIOR_ACCOUNT_NOT_IN_CURRENT_COA",
+      "message": "Prior-period accounts are absent from the current COA; candidate mappings require evidence and approval.",
+      "evidence": [
+        {
+          "account_code": "6905",
+          "account_name": "Sundry Operating Expenses",
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "severity": "high",
+      "code": "FX_PERIOD_END_RATE_MISSING",
+      "message": "Non-functional currencies in the current TB lack a period-end FX rate. Do not silently substitute period-average or opening rates.",
+      "evidence": {
+        "functional_currency": "USD",
+        "currencies": [
+          "GBP"
+        ]
+      }
+    },
+    {
+      "severity": "high",
+      "code": "ADJUSTMENT_OUT_OF_BALANCE",
+      "message": "One or more proposed journal entries have unequal debit and credit totals; quarantine rather than post.",
+      "evidence": [
+        {
+          "entry_id": "JE-002",
+          "debit_total": 28500.0,
+          "credit_total": 25000.0,
+          "difference": 3500.0
+        }
+      ]
+    },
+    {
+      "severity": "high",
+      "code": "ADJUSTMENT_ACCOUNT_NOT_IN_COA",
+      "message": "Proposed journal entries reference accounts absent from the COA.",
+      "evidence": [
+        {
+          "entry_id": "JE-005",
+          "unknown_account_codes": [
+            "6315"
+          ]
+        }
+      ]
+    },
+    {
+      "severity": "medium",
+      "code": "ADJUSTMENT_REPEATED_ACCOUNT_LINES",
+      "message": "A journal entry debits and credits the same account code on multiple lines. This is not automatically invalid, but requires semantic review, especially for intercompany entries.",
+      "evidence": [
+        {
+          "entry_id": "JE-008",
+          "description": "Intercompany settlement — UK sub",
+          "account_codes": [
+            "2170",
+            "2170"
+          ]
+        }
+      ]
+    }
+  ],
+  "note": "Read-only diagnostic report. Findings are signals for review, not automatic accounting conclusions."
+}

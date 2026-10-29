@@ -1,0 +1,284 @@
+{
+  "workflow": "LangGraph COA mapping review",
+  "retrieval_method": "Dense vectors + BM25 + Reciprocal Rank Fusion",
+  "recommendations": [
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "source_locations": [
+        "trial_balance.csv"
+      ],
+      "decision": "abstain",
+      "recommended_account_code": null,
+      "reason": "The source account is an unmapped suspense account without specific transactional details, and none of the retrieved candidates (Lease Liability, Intangible Assets, Long-term Debt) provide a defensible mapping for a generic suspense balance.",
+      "supporting_evidence": [
+        "Source account is 'Suspense - Unmapped' with no exact account-code match."
+      ],
+      "missing_information": [
+        "Underlying transaction details or supporting documentation for the suspense balance.",
+        "Nature of the amounts currently held in the unmapped suspense account."
+      ],
+      "candidate_account_codes": [
+        "2220",
+        "1220",
+        "2210"
+      ],
+      "candidates": [
+        {
+          "account_code": "2220",
+          "account_name": "Lease Liability - Long-term",
+          "account_type": "Liability",
+          "similarity_score": 0.1059885025024414,
+          "rank": 1,
+          "evidence": [
+            "COA record ID: 2220__22",
+            "Account name: Lease Liability - Long-term",
+            "Account type: Liability",
+            "Statement: BS",
+            "Cash-flow category: Financing",
+            "Normal balance: Credit",
+            "Dense rank: 1",
+            "BM25 rank: no positive lexical match",
+            "RRF score: 0.016393"
+          ]
+        },
+        {
+          "account_code": "1220",
+          "account_name": "Intangible Assets - Cost",
+          "account_type": "Asset",
+          "similarity_score": 0.09778225421905518,
+          "rank": 2,
+          "evidence": [
+            "COA record ID: 1220__9",
+            "Account name: Intangible Assets - Cost",
+            "Account type: Asset",
+            "Statement: BS",
+            "Cash-flow category: Investing",
+            "Normal balance: Debit",
+            "Dense rank: 2",
+            "BM25 rank: no positive lexical match",
+            "RRF score: 0.016129"
+          ]
+        },
+        {
+          "account_code": "2210",
+          "account_name": "Long-term Debt",
+          "account_type": "Liability",
+          "similarity_score": 0.08943068981170654,
+          "rank": 3,
+          "evidence": [
+            "COA record ID: 2210__21",
+            "Account name: Long-term Debt",
+            "Account type: Liability",
+            "Statement: BS",
+            "Cash-flow category: Financing",
+            "Normal balance: Credit",
+            "Dense rank: 3",
+            "BM25 rank: no positive lexical match",
+            "RRF score: 0.015873"
+          ]
+        }
+      ],
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "source_locations": [
+        "prior_period_tb.csv"
+      ],
+      "decision": "abstain",
+      "recommended_account_code": null,
+      "reason": "The source account 'Sundry Operating Expenses' is a generic catch-all bucket. While 'Other Operating Expenses' (6900) is a candidate, mapping sundry expenses requires human review to determine the exact nature of the historical items or if a more specific operating expense category applies.",
+      "supporting_evidence": [
+        "Source account represents sundry operating expenses from a prior period trial balance."
+      ],
+      "missing_information": [
+        "Detailed transaction breakdown of the historical sundry operating expenses account to ensure proper classification."
+      ],
+      "candidate_account_codes": [
+        "6900",
+        "6500",
+        "6200"
+      ],
+      "candidates": [
+        {
+          "account_code": "6900",
+          "account_name": "Other Operating Expenses",
+          "account_type": "Expense",
+          "similarity_score": 0.33964216709136963,
+          "rank": 1,
+          "evidence": [
+            "COA record ID: 6900__50",
+            "Account name: Other Operating Expenses",
+            "Account type: Expense",
+            "Statement: PL",
+            "Cash-flow category: ",
+            "Normal balance: Debit",
+            "Dense rank: 1",
+            "BM25 rank: 1",
+            "RRF score: 0.032787"
+          ]
+        },
+        {
+          "account_code": "6500",
+          "account_name": "Depreciation Expense",
+          "account_type": "Expense",
+          "similarity_score": 0.30758970975875854,
+          "rank": 2,
+          "evidence": [
+            "COA record ID: 6500__47",
+            "Account name: Depreciation Expense",
+            "Account type: Expense",
+            "Statement: PL",
+            "Cash-flow category: Operating",
+            "Normal balance: Debit",
+            "Dense rank: 3",
+            "BM25 rank: 2",
+            "RRF score: 0.032002"
+          ]
+        },
+        {
+          "account_code": "6200",
+          "account_name": "Rent Expense",
+          "account_type": "Expense",
+          "similarity_score": 0.3353128433227539,
+          "rank": 3,
+          "evidence": [
+            "COA record ID: 6200__40",
+            "Account name: Rent Expense",
+            "Account type: Expense",
+            "Statement: PL",
+            "Cash-flow category: ",
+            "Normal balance: Debit",
+            "Dense rank: 2",
+            "BM25 rank: 9",
+            "RRF score: 0.030622"
+          ]
+        }
+      ],
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "source_locations": [
+        "manual_adjustments.json:JE-005"
+      ],
+      "decision": "recommend",
+      "recommended_account_code": "6310",
+      "reason": "The source context indicates a reclassification for conference travel, which directly aligns with the Travel and Entertainment expense account.",
+      "supporting_evidence": [
+        "Source memo specifies Conf travel",
+        "Candidate account 6310 is named Travel and Entertainment"
+      ],
+      "missing_information": [
+        "Detailed breakdown of the conference travel expenses if segregation from standard travel is required by company policy"
+      ],
+      "candidate_account_codes": [
+        "6310",
+        "6410",
+        "6110"
+      ],
+      "candidates": [
+        {
+          "account_code": "6310",
+          "account_name": "Travel and Entertainment",
+          "account_type": "Expense",
+          "similarity_score": 0.33402544260025024,
+          "rank": 1,
+          "evidence": [
+            "COA record ID: 6310__44",
+            "Account name: Travel and Entertainment",
+            "Account type: Expense",
+            "Statement: PL",
+            "Cash-flow category: ",
+            "Normal balance: Debit",
+            "Dense rank: 1",
+            "BM25 rank: 1",
+            "RRF score: 0.032787"
+          ]
+        },
+        {
+          "account_code": "6410",
+          "account_name": "Insurance",
+          "account_type": "Expense",
+          "similarity_score": 0.2682110071182251,
+          "rank": 2,
+          "evidence": [
+            "COA record ID: 6410__46",
+            "Account name: Insurance",
+            "Account type: Expense",
+            "Statement: PL",
+            "Cash-flow category: ",
+            "Normal balance: Debit",
+            "Dense rank: 3",
+            "BM25 rank: 3",
+            "RRF score: 0.031746"
+          ]
+        },
+        {
+          "account_code": "6110",
+          "account_name": "Employee Benefits",
+          "account_type": "Expense",
+          "similarity_score": 0.2637563943862915,
+          "rank": 3,
+          "evidence": [
+            "COA record ID: 6110__38",
+            "Account name: Employee Benefits",
+            "Account type: Expense",
+            "Statement: PL",
+            "Cash-flow category: ",
+            "Normal balance: Debit",
+            "Dense rank: 6",
+            "BM25 rank: 7",
+            "RRF score: 0.030077"
+          ]
+        }
+      ],
+      "requires_human_review": true
+    }
+  ],
+  "review_decisions": [
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "llm_recommendation": "abstain",
+      "llm_recommended_account_code": null,
+      "review_action": "quarantine",
+      "approved_target_account_code": null,
+      "reviewer": "soma",
+      "review_notes": "The source is a generic suspense account. There is insufficient evidence to map it to intangible assets, lease liabilities, or long-term debt. Require transaction-level evidence and finance approval.",
+      "review_completed": true,
+      "mapping_status": "quarantined",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "llm_recommendation": "abstain",
+      "llm_recommended_account_code": null,
+      "review_action": "quarantine",
+      "approved_target_account_code": null,
+      "reviewer": "soma",
+      "review_notes": "Gemini abstained because the historical account description is generic. Obtain transaction-level details or an approved accounting policy before mapping.",
+      "review_completed": true,
+      "mapping_status": "quarantined",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "llm_recommendation": "recommend",
+      "llm_recommended_account_code": "6310",
+      "review_action": "approve",
+      "approved_target_account_code": "6310",
+      "reviewer": "soma",
+      "review_notes": "The manual adjustment memo refers to conference travel, which aligns with Travel and Entertainment (6310). Approved for this prototype review based on the supplied memo; verify the original transaction documentation before production use.",
+      "review_completed": true,
+      "mapping_status": "approved",
+      "requires_human_review": false
+    }
+  ],
+  "note": "LLM recommendations are proposals. Review results record reviewer actions but do not post accounting entries or modify source files."
+}

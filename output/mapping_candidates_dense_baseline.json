@@ -1,0 +1,245 @@
+{
+  "retrieval_method": "Sentence Transformers + ChromaDB",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "candidate_accounts_indexed": 58,
+  "unresolved_source_accounts": 3,
+  "candidate_count": 9,
+  "latency_seconds": {
+    "model_load": 3.6329,
+    "embedding_generation": 0.2934,
+    "vector_search": 0.0049,
+    "total": 4.1358
+  },
+  "llm_calls": 0,
+  "llm_input_tokens": 0,
+  "llm_output_tokens": 0,
+  "llm_api_cost_usd": 0.0,
+  "note": "Retrieval-only stage: no LLM calls were made. Similarity scores are ranking signals, not calibrated mapping confidence or accounting approval.",
+  "candidates": [
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "source_locations": [
+        "trial_balance.csv"
+      ],
+      "source_context": [
+        "No exact account-code match exists in the current COA."
+      ],
+      "candidate_account_code": "2220",
+      "candidate_account_name": "Lease Liability - Long-term",
+      "candidate_account_type": "Liability",
+      "similarity_score": 0.1059885025024414,
+      "rank": 1,
+      "evidence": [
+        "COA record ID: 2220__22",
+        "Account name: Lease Liability - Long-term",
+        "Account type: Liability",
+        "Statement: BS",
+        "Cash-flow category: Financing",
+        "Normal balance: Credit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "source_locations": [
+        "trial_balance.csv"
+      ],
+      "source_context": [
+        "No exact account-code match exists in the current COA."
+      ],
+      "candidate_account_code": "1220",
+      "candidate_account_name": "Intangible Assets - Cost",
+      "candidate_account_type": "Asset",
+      "similarity_score": 0.09778225421905518,
+      "rank": 2,
+      "evidence": [
+        "COA record ID: 1220__9",
+        "Account name: Intangible Assets - Cost",
+        "Account type: Asset",
+        "Statement: BS",
+        "Cash-flow category: Investing",
+        "Normal balance: Debit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "source_locations": [
+        "trial_balance.csv"
+      ],
+      "source_context": [
+        "No exact account-code match exists in the current COA."
+      ],
+      "candidate_account_code": "2210",
+      "candidate_account_name": "Long-term Debt",
+      "candidate_account_type": "Liability",
+      "similarity_score": 0.08943068981170654,
+      "rank": 3,
+      "evidence": [
+        "COA record ID: 2210__21",
+        "Account name: Long-term Debt",
+        "Account type: Liability",
+        "Statement: BS",
+        "Cash-flow category: Financing",
+        "Normal balance: Credit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "source_locations": [
+        "prior_period_tb.csv"
+      ],
+      "source_context": [
+        "Historical account absent from the current COA."
+      ],
+      "candidate_account_code": "6900",
+      "candidate_account_name": "Other Operating Expenses",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.33964216709136963,
+      "rank": 1,
+      "evidence": [
+        "COA record ID: 6900__50",
+        "Account name: Other Operating Expenses",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "source_locations": [
+        "prior_period_tb.csv"
+      ],
+      "source_context": [
+        "Historical account absent from the current COA."
+      ],
+      "candidate_account_code": "6200",
+      "candidate_account_name": "Rent Expense",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.3353128433227539,
+      "rank": 2,
+      "evidence": [
+        "COA record ID: 6200__40",
+        "Account name: Rent Expense",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "source_locations": [
+        "prior_period_tb.csv"
+      ],
+      "source_context": [
+        "Historical account absent from the current COA."
+      ],
+      "candidate_account_code": "6500",
+      "candidate_account_name": "Depreciation Expense",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.30758970975875854,
+      "rank": 3,
+      "evidence": [
+        "COA record ID: 6500__47",
+        "Account name: Depreciation Expense",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: Operating",
+        "Normal balance: Debit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "source_locations": [
+        "manual_adjustments.json:JE-005"
+      ],
+      "source_context": [
+        "Reclass conference travel from old code; memo: Conf travel"
+      ],
+      "candidate_account_code": "6310",
+      "candidate_account_name": "Travel and Entertainment",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.33402544260025024,
+      "rank": 1,
+      "evidence": [
+        "COA record ID: 6310__44",
+        "Account name: Travel and Entertainment",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "source_locations": [
+        "manual_adjustments.json:JE-005"
+      ],
+      "source_context": [
+        "Reclass conference travel from old code; memo: Conf travel"
+      ],
+      "candidate_account_code": "8200",
+      "candidate_account_name": "Deferred Tax Expense",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.2818211317062378,
+      "rank": 2,
+      "evidence": [
+        "COA record ID: 8200__57",
+        "Account name: Deferred Tax Expense",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: Operating",
+        "Normal balance: Debit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "source_locations": [
+        "manual_adjustments.json:JE-005"
+      ],
+      "source_context": [
+        "Reclass conference travel from old code; memo: Conf travel"
+      ],
+      "candidate_account_code": "6410",
+      "candidate_account_name": "Insurance",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.2682110071182251,
+      "rank": 3,
+      "evidence": [
+        "COA record ID: 6410__46",
+        "Account name: Insurance",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    }
+  ]
+}

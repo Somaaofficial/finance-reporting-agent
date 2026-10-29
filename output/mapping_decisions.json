@@ -1,0 +1,945 @@
+[
+  {
+    "source_account_code": "1110",
+    "source_account_name": "Cash and Cash Equivalents",
+    "target_account_code": "1110",
+    "target_account_name": "Cash and Cash Equivalents",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1110",
+      "Matching COA name: Cash and Cash Equivalents",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1120",
+    "source_account_name": "Accounts Receivable",
+    "target_account_code": "1120",
+    "target_account_name": "Accounts Receivable",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1120",
+      "Matching COA name: Accounts Receivable",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1121",
+    "source_account_name": "Allowance for Doubtful Accounts",
+    "target_account_code": "1121",
+    "target_account_name": "Allowance for Doubtful Accounts",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1121",
+      "Matching COA name: Allowance for Doubtful Accounts",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1130",
+    "source_account_name": "Inventory - Raw Materials",
+    "target_account_code": "1130",
+    "target_account_name": "Inventory - Raw Materials",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1130",
+      "Matching COA name: Inventory - Raw Materials",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1131",
+    "source_account_name": "Inventory - Finished Goods",
+    "target_account_code": "1131",
+    "target_account_name": "Inventory - Finished Goods",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1131",
+      "Matching COA name: Inventory - Finished Goods",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1140",
+    "source_account_name": "Prepaid Expenses",
+    "target_account_code": "1140",
+    "target_account_name": "Prepaid Expenses",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1140",
+      "Matching COA name: Prepaid Expenses",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1150",
+    "source_account_name": "Other Current Assets",
+    "target_account_code": "1150",
+    "target_account_name": "Other Current Assets",
+    "status": "needs_review",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "The account code and name match, but the cash-flow category is TBD.",
+    "evidence": [
+      "COA code: 1150",
+      "COA name: Other Current Assets",
+      "Cash-flow category: TBD"
+    ],
+    "requires_human_review": true
+  },
+  {
+    "source_account_code": "1210",
+    "source_account_name": "Property, Plant & Equipment - Cost",
+    "target_account_code": "1210",
+    "target_account_name": "Property, Plant & Equipment - Cost",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1210",
+      "Matching COA name: Property, Plant & Equipment - Cost",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1211",
+    "source_account_name": "Accumulated Depreciation - PPE",
+    "target_account_code": "1211",
+    "target_account_name": "Accumulated Depreciation - PPE",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1211",
+      "Matching COA name: Accumulated Depreciation - PPE",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1220",
+    "source_account_name": "Intangible Assets - Cost",
+    "target_account_code": "1220",
+    "target_account_name": "Intangible Assets - Cost",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1220",
+      "Matching COA name: Intangible Assets - Cost",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1221",
+    "source_account_name": "Accumulated Amortization",
+    "target_account_code": "1221",
+    "target_account_name": "Accumulated Amortization",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1221",
+      "Matching COA name: Accumulated Amortization",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1230",
+    "source_account_name": "Goodwill",
+    "target_account_code": "1230",
+    "target_account_name": "Goodwill",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1230",
+      "Matching COA name: Goodwill",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1240",
+    "source_account_name": "Long-term Investments",
+    "target_account_code": "1240",
+    "target_account_name": "Long-term Investments",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1240",
+      "Matching COA name: Long-term Investments",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "1250",
+    "source_account_name": "Deferred Tax Asset",
+    "target_account_code": "1250",
+    "target_account_name": "Deferred Tax Asset",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 1250",
+      "Matching COA name: Deferred Tax Asset",
+      "COA account type: Asset"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2110",
+    "source_account_name": "Accounts Payable",
+    "target_account_code": "2110",
+    "target_account_name": "Accounts Payable",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2110",
+      "Matching COA name: Accounts Payable",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2120",
+    "source_account_name": "Accrued Expenses",
+    "target_account_code": "2120",
+    "target_account_name": "Accrued Expenses",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2120",
+      "Matching COA name: Accrued Expenses",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2130",
+    "source_account_name": "Short-term Debt",
+    "target_account_code": "2130",
+    "target_account_name": "Short-term Debt",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2130",
+      "Matching COA name: Short-term Debt",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2140",
+    "source_account_name": "Current Portion of Long-term Debt",
+    "target_account_code": "2140",
+    "target_account_name": "Current Portion of Long-term Debt",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2140",
+      "Matching COA name: Current Portion of Long-term Debt",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2150",
+    "source_account_name": "Income Tax Payable",
+    "target_account_code": "2150",
+    "target_account_name": "Income Tax Payable",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2150",
+      "Matching COA name: Income Tax Payable",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2160",
+    "source_account_name": "Deferred Revenue",
+    "target_account_code": "2160",
+    "target_account_name": "Deferred Revenue",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2160",
+      "Matching COA name: Deferred Revenue",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2170",
+    "source_account_name": "Intercompany Payable",
+    "target_account_code": "2170",
+    "target_account_name": "Intercompany Payable",
+    "status": "needs_review",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "The account code and name match, but the cash-flow category is TBD.",
+    "evidence": [
+      "COA code: 2170",
+      "COA name: Intercompany Payable",
+      "Cash-flow category: TBD"
+    ],
+    "requires_human_review": true
+  },
+  {
+    "source_account_code": "2210",
+    "source_account_name": "Long-term Debt",
+    "target_account_code": "2210",
+    "target_account_name": "Long-term Debt",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2210",
+      "Matching COA name: Long-term Debt",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2220",
+    "source_account_name": "Lease Liability - Long-term",
+    "target_account_code": "2220",
+    "target_account_name": "Lease Liability - Long-term",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2220",
+      "Matching COA name: Lease Liability - Long-term",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2230",
+    "source_account_name": "Deferred Tax Liability",
+    "target_account_code": "2230",
+    "target_account_name": "Deferred Tax Liability",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2230",
+      "Matching COA name: Deferred Tax Liability",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "2240",
+    "source_account_name": "Pension Obligations",
+    "target_account_code": "2240",
+    "target_account_name": "Pension Obligations",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 2240",
+      "Matching COA name: Pension Obligations",
+      "COA account type: Liability"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "3100",
+    "source_account_name": "Common Stock",
+    "target_account_code": "3100",
+    "target_account_name": "Common Stock",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 3100",
+      "Matching COA name: Common Stock",
+      "COA account type: Equity"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "3110",
+    "source_account_name": "Additional Paid-in Capital",
+    "target_account_code": "3110",
+    "target_account_name": "Additional Paid-in Capital",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 3110",
+      "Matching COA name: Additional Paid-in Capital",
+      "COA account type: Equity"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "3200",
+    "source_account_name": "Retained Earnings",
+    "target_account_code": "3200",
+    "target_account_name": "Retained Earnings",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 3200",
+      "Matching COA name: Retained Earnings",
+      "COA account type: Equity"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "3310",
+    "source_account_name": "FX Translation Reserve",
+    "target_account_code": "3310",
+    "target_account_name": "FX Translation Reserve",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 3310",
+      "Matching COA name: FX Translation Reserve",
+      "COA account type: Equity"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "3400",
+    "source_account_name": "Treasury Stock",
+    "target_account_code": "3400",
+    "target_account_name": "Treasury Stock",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 3400",
+      "Matching COA name: Treasury Stock",
+      "COA account type: Equity"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "4100",
+    "source_account_name": "Product Revenue",
+    "target_account_code": "4100",
+    "target_account_name": "Product Revenue",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 4100",
+      "Matching COA name: Product Revenue",
+      "COA account type: Revenue"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "4110",
+    "source_account_name": "Service Revenue",
+    "target_account_code": "4110",
+    "target_account_name": "Service Revenue",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 4110",
+      "Matching COA name: Service Revenue",
+      "COA account type: Revenue"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "4200",
+    "source_account_name": "Sales Returns and Allowances",
+    "target_account_code": "4200",
+    "target_account_name": "Sales Returns and Allowances",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 4200",
+      "Matching COA name: Sales Returns and Allowances",
+      "COA account type: Revenue"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "4300",
+    "source_account_name": "Other Operating Revenue",
+    "target_account_code": "4300",
+    "target_account_name": "Other Operating Revenue",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 4300",
+      "Matching COA name: Other Operating Revenue",
+      "COA account type: Revenue"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "5100",
+    "source_account_name": "COGS - Materials",
+    "target_account_code": "5100",
+    "target_account_name": "COGS - Materials",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 5100",
+      "Matching COA name: COGS - Materials",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "5110",
+    "source_account_name": "COGS - Direct Labor",
+    "target_account_code": "5110",
+    "target_account_name": "COGS - Direct Labor",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 5110",
+      "Matching COA name: COGS - Direct Labor",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "5120",
+    "source_account_name": "COGS - Manufacturing Overhead",
+    "target_account_code": "5120",
+    "target_account_name": "COGS - Manufacturing Overhead",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 5120",
+      "Matching COA name: COGS - Manufacturing Overhead",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6100",
+    "source_account_name": "Salaries and Wages",
+    "target_account_code": "6100",
+    "target_account_name": "Salaries and Wages",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6100",
+      "Matching COA name: Salaries and Wages",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6110",
+    "source_account_name": "Employee Benefits",
+    "target_account_code": "6110",
+    "target_account_name": "Employee Benefits",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6110",
+      "Matching COA name: Employee Benefits",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6120",
+    "source_account_name": "Payroll Taxes",
+    "target_account_code": "6120",
+    "target_account_name": "Payroll Taxes",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6120",
+      "Matching COA name: Payroll Taxes",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6200",
+    "source_account_name": "Rent Expense",
+    "target_account_code": "6200",
+    "target_account_name": "Rent Expense",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6200",
+      "Matching COA name: Rent Expense",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6210",
+    "source_account_name": "Utilities",
+    "target_account_code": "6210",
+    "target_account_name": "Utilities",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6210",
+      "Matching COA name: Utilities",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6220",
+    "source_account_name": "Office Supplies",
+    "target_account_code": "6220",
+    "target_account_name": "Office Supplies",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6220",
+      "Matching COA name: Office Supplies",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6300",
+    "source_account_name": "Marketing and Advertising",
+    "target_account_code": "6300",
+    "target_account_name": "Marketing and Advertising",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6300",
+      "Matching COA name: Marketing and Advertising",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6310",
+    "source_account_name": "Travel and Entertainment",
+    "target_account_code": "6310",
+    "target_account_name": "Travel and Entertainment",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6310",
+      "Matching COA name: Travel and Entertainment",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6400",
+    "source_account_name": "Professional Fees",
+    "target_account_code": "6400",
+    "target_account_name": "Professional Fees",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6400",
+      "Matching COA name: Professional Fees",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6410",
+    "source_account_name": "Insurance",
+    "target_account_code": "6410",
+    "target_account_name": "Insurance",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6410",
+      "Matching COA name: Insurance",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6500",
+    "source_account_name": "Depreciation Expense",
+    "target_account_code": "6500",
+    "target_account_name": "Depreciation Expense",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6500",
+      "Matching COA name: Depreciation Expense",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6510",
+    "source_account_name": "Amortization Expense",
+    "target_account_code": "6510",
+    "target_account_name": "Amortization Expense",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6510",
+      "Matching COA name: Amortization Expense",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6600",
+    "source_account_name": "Bad Debt Expense",
+    "target_account_code": "6600",
+    "target_account_name": "Bad Debt Expense",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6600",
+      "Matching COA name: Bad Debt Expense",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "6900",
+    "source_account_name": "Other Operating Expenses",
+    "target_account_code": "6900",
+    "target_account_name": "Other Operating Expenses",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 6900",
+      "Matching COA name: Other Operating Expenses",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "7100",
+    "source_account_name": "Interest Income",
+    "target_account_code": "7100",
+    "target_account_name": "Interest Income",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 7100",
+      "Matching COA name: Interest Income",
+      "COA account type: Revenue"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "7200",
+    "source_account_name": "Interest Expense",
+    "target_account_code": "7200",
+    "target_account_name": "Interest Expense",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 7200",
+      "Matching COA name: Interest Expense",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "7300",
+    "source_account_name": "FX Gain/Loss - Realized",
+    "target_account_code": "7300",
+    "target_account_name": "FX Gain/Loss - Realized",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 7300",
+      "Matching COA name: FX Gain/Loss - Realized",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "7310",
+    "source_account_name": "FX Gain/Loss - Unrealized",
+    "target_account_code": "7310",
+    "target_account_name": "FX Gain/Loss - Unrealized",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 7310",
+      "Matching COA name: FX Gain/Loss - Unrealized",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "7400",
+    "source_account_name": "Gain/Loss on Disposal of Assets",
+    "target_account_code": "7400",
+    "target_account_name": "Gain/Loss on Disposal of Assets",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 7400",
+      "Matching COA name: Gain/Loss on Disposal of Assets",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "8100",
+    "source_account_name": "Current Tax Expense",
+    "target_account_code": "8100",
+    "target_account_name": "Current Tax Expense",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 8100",
+      "Matching COA name: Current Tax Expense",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "8200",
+    "source_account_name": "Deferred Tax Expense",
+    "target_account_code": "8200",
+    "target_account_name": "Deferred Tax Expense",
+    "status": "exact_match",
+    "method": "exact_code",
+    "confidence_score": 1.0,
+    "reason": "Unique account-code match with an agreeing account name.",
+    "evidence": [
+      "Exact code match: 8200",
+      "Matching COA name: Deferred Tax Expense",
+      "COA account type: Expense"
+    ],
+    "requires_human_review": false
+  },
+  {
+    "source_account_code": "9999",
+    "source_account_name": "Suspense - Unmapped",
+    "target_account_code": null,
+    "target_account_name": null,
+    "status": "unmapped",
+    "method": "none",
+    "confidence_score": 0.0,
+    "reason": "No exact account-code match exists in the current COA.",
+    "evidence": [
+      "Source account name: Suspense - Unmapped",
+      "A candidate mapping requires additional evidence."
+    ],
+    "requires_human_review": true
+  }
+]

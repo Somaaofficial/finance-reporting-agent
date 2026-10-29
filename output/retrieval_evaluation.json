@@ -1,0 +1,53 @@
+{
+  "top_k": 3,
+  "ranking_evaluable_queries": 2,
+  "excluded_queries_without_verified_target": [
+    "9999"
+  ],
+  "macro_precision_at_k": 0.3333333333333333,
+  "macro_recall_at_k": 1.0,
+  "mean_reciprocal_rank_at_k": 1.0,
+  "candidate_safety": {
+    "total_candidates": 9,
+    "requiring_human_review": 9,
+    "safety_rate": 1.0,
+    "unsafe_candidates": []
+  },
+  "per_query_results": [
+    {
+      "source_account_code": "6905",
+      "retrieved_top_k": [
+        "6900",
+        "6500",
+        "6200"
+      ],
+      "relevant_candidate_codes": [
+        "6900"
+      ],
+      "hits": [
+        "6900"
+      ],
+      "precision_at_k": 0.3333333333333333,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "source_account_code": "6315",
+      "retrieved_top_k": [
+        "6310",
+        "6410",
+        "6110"
+      ],
+      "relevant_candidate_codes": [
+        "6310"
+      ],
+      "hits": [
+        "6310"
+      ],
+      "precision_at_k": 0.3333333333333333,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0
+    }
+  ],
+  "evaluation_limitations": "These are provisional relevance judgments, not approved accounting mappings. The retrieval results were already inspected, so this is a smoke test rather than an unbiased holdout evaluation. A finance reviewer should validate the labels."
+}

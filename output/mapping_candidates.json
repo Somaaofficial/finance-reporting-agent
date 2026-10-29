@@ -1,0 +1,276 @@
+{
+  "retrieval_method": "Dense vectors + BM25 + Reciprocal Rank Fusion",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "lexical_retriever": "BM25Okapi",
+  "fusion_method": "RRF with k=60",
+  "candidate_accounts_indexed": 58,
+  "unresolved_source_accounts": 3,
+  "candidate_count": 9,
+  "latency_seconds": {
+    "model_load": 4.359,
+    "embedding_generation": 0.9399,
+    "vector_search": 0.0176,
+    "bm25_and_fusion": 0.0014,
+    "retrieval_and_fusion": 0.0189,
+    "total": 5.8376
+  },
+  "llm_calls": 0,
+  "llm_input_tokens": 0,
+  "llm_output_tokens": 0,
+  "llm_api_cost_usd": 0.0,
+  "note": "Retrieval-only stage: no LLM calls were made. The rank is based on Reciprocal Rank Fusion. similarity_score is cosine similarity, not a calibrated mapping confidence or accounting approval. All candidates require human review.",
+  "candidates": [
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "source_locations": [
+        "trial_balance.csv"
+      ],
+      "source_context": [
+        "No exact account-code match exists in the current COA."
+      ],
+      "candidate_account_code": "2220",
+      "candidate_account_name": "Lease Liability - Long-term",
+      "candidate_account_type": "Liability",
+      "similarity_score": 0.1059885025024414,
+      "rank": 1,
+      "evidence": [
+        "COA record ID: 2220__22",
+        "Account name: Lease Liability - Long-term",
+        "Account type: Liability",
+        "Statement: BS",
+        "Cash-flow category: Financing",
+        "Normal balance: Credit",
+        "Dense rank: 1",
+        "BM25 rank: no positive lexical match",
+        "RRF score: 0.016393"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "source_locations": [
+        "trial_balance.csv"
+      ],
+      "source_context": [
+        "No exact account-code match exists in the current COA."
+      ],
+      "candidate_account_code": "1220",
+      "candidate_account_name": "Intangible Assets - Cost",
+      "candidate_account_type": "Asset",
+      "similarity_score": 0.09778225421905518,
+      "rank": 2,
+      "evidence": [
+        "COA record ID: 1220__9",
+        "Account name: Intangible Assets - Cost",
+        "Account type: Asset",
+        "Statement: BS",
+        "Cash-flow category: Investing",
+        "Normal balance: Debit",
+        "Dense rank: 2",
+        "BM25 rank: no positive lexical match",
+        "RRF score: 0.016129"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "9999",
+      "source_account_name": "Suspense - Unmapped",
+      "source_locations": [
+        "trial_balance.csv"
+      ],
+      "source_context": [
+        "No exact account-code match exists in the current COA."
+      ],
+      "candidate_account_code": "2210",
+      "candidate_account_name": "Long-term Debt",
+      "candidate_account_type": "Liability",
+      "similarity_score": 0.08943068981170654,
+      "rank": 3,
+      "evidence": [
+        "COA record ID: 2210__21",
+        "Account name: Long-term Debt",
+        "Account type: Liability",
+        "Statement: BS",
+        "Cash-flow category: Financing",
+        "Normal balance: Credit",
+        "Dense rank: 3",
+        "BM25 rank: no positive lexical match",
+        "RRF score: 0.015873"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "source_locations": [
+        "prior_period_tb.csv"
+      ],
+      "source_context": [
+        "Historical account absent from the current COA."
+      ],
+      "candidate_account_code": "6900",
+      "candidate_account_name": "Other Operating Expenses",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.33964216709136963,
+      "rank": 1,
+      "evidence": [
+        "COA record ID: 6900__50",
+        "Account name: Other Operating Expenses",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit",
+        "Dense rank: 1",
+        "BM25 rank: 1",
+        "RRF score: 0.032787"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "source_locations": [
+        "prior_period_tb.csv"
+      ],
+      "source_context": [
+        "Historical account absent from the current COA."
+      ],
+      "candidate_account_code": "6500",
+      "candidate_account_name": "Depreciation Expense",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.30758970975875854,
+      "rank": 2,
+      "evidence": [
+        "COA record ID: 6500__47",
+        "Account name: Depreciation Expense",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: Operating",
+        "Normal balance: Debit",
+        "Dense rank: 3",
+        "BM25 rank: 2",
+        "RRF score: 0.032002"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6905",
+      "source_account_name": "Sundry Operating Expenses",
+      "source_locations": [
+        "prior_period_tb.csv"
+      ],
+      "source_context": [
+        "Historical account absent from the current COA."
+      ],
+      "candidate_account_code": "6200",
+      "candidate_account_name": "Rent Expense",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.3353128433227539,
+      "rank": 3,
+      "evidence": [
+        "COA record ID: 6200__40",
+        "Account name: Rent Expense",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit",
+        "Dense rank: 2",
+        "BM25 rank: 9",
+        "RRF score: 0.030622"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "source_locations": [
+        "manual_adjustments.json:JE-005"
+      ],
+      "source_context": [
+        "Reclass conference travel from old code; memo: Conf travel"
+      ],
+      "candidate_account_code": "6310",
+      "candidate_account_name": "Travel and Entertainment",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.33402544260025024,
+      "rank": 1,
+      "evidence": [
+        "COA record ID: 6310__44",
+        "Account name: Travel and Entertainment",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit",
+        "Dense rank: 1",
+        "BM25 rank: 1",
+        "RRF score: 0.032787"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "source_locations": [
+        "manual_adjustments.json:JE-005"
+      ],
+      "source_context": [
+        "Reclass conference travel from old code; memo: Conf travel"
+      ],
+      "candidate_account_code": "6410",
+      "candidate_account_name": "Insurance",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.2682110071182251,
+      "rank": 2,
+      "evidence": [
+        "COA record ID: 6410__46",
+        "Account name: Insurance",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit",
+        "Dense rank: 3",
+        "BM25 rank: 3",
+        "RRF score: 0.031746"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    },
+    {
+      "source_account_code": "6315",
+      "source_account_name": null,
+      "source_locations": [
+        "manual_adjustments.json:JE-005"
+      ],
+      "source_context": [
+        "Reclass conference travel from old code; memo: Conf travel"
+      ],
+      "candidate_account_code": "6110",
+      "candidate_account_name": "Employee Benefits",
+      "candidate_account_type": "Expense",
+      "similarity_score": 0.2637563943862915,
+      "rank": 3,
+      "evidence": [
+        "COA record ID: 6110__38",
+        "Account name: Employee Benefits",
+        "Account type: Expense",
+        "Statement: PL",
+        "Cash-flow category: ",
+        "Normal balance: Debit",
+        "Dense rank: 6",
+        "BM25 rank: 7",
+        "RRF score: 0.030077"
+      ],
+      "status": "candidate_only",
+      "requires_human_review": true
+    }
+  ]
+}

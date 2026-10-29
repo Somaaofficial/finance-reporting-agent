@@ -1,0 +1,29 @@
+{
+  "benchmark_name": "COA retrieval smoke test",
+  "version": "provisional-v1",
+  "limitations": "These are provisional relevance judgments, not approved accounting mappings. The retrieval results were already inspected, so this is a smoke test rather than an unbiased holdout evaluation. A finance reviewer should validate the labels.",
+  "cases": [
+    {
+      "source_account_code": "6905",
+      "relevant_candidate_codes": ["6900"],
+      "ranking_evaluable": true,
+      "rationale": "Other Operating Expenses is a plausible candidate based on the source account description and broad expense classification, but it is not an approved mapping."
+    },
+    {
+      "source_account_code": "6315",
+      "relevant_candidate_codes": ["6310"],
+      "ranking_evaluable": true,
+      "rationale": "The adjustment memo refers to conference travel, which is relevant to Travel and Entertainment. This is a candidate for review, not a confirmed mapping."
+    },
+    {
+      "source_account_code": "9999",
+      "relevant_candidate_codes": [],
+      "ranking_evaluable": false,
+      "rationale": "The Suspense - Unmapped description does not provide enough evidence to identify a valid target account. Do not infer one from the similarity ranking.",
+      "expected_safety": {
+        "status": "candidate_only",
+        "requires_human_review": true
+      }
+    }
+  ]
+}

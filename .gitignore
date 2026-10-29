@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+*.py[cod]
+
+# Local logs and test coverage
+*.log
+.coverage
+
+# Rebuildable local ChromaDB index
+output/chroma_coa_index/
