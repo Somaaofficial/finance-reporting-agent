@@ -1,138 +1,146 @@
-# Architecture: Financial Reporting Agent — Trial Balance to COA Mapping
+# Architecture: Agentic Financial Reporting Platform
 
-**Assignment:** AI Agentic Engineer take-home
+**Assignment:** AI Agentic Engineer Take-Home Assignment
 **Selected prototype slice:** Trial Balance (TB) to Chart of Accounts (COA) mapping
-**Implementation status:** Local Python prototype for read-only profiling, deterministic mapping, hybrid retrieval, and retrieval evaluation. It is not a complete financial reporting system.
 
-## 1. Problem framing and scope
+## 1. Objective and Scope
 
-The assignment describes a broader platform that would ingest ERP trial balances, a COA, manual adjustments, prior-period data, and FX rates, then generate the Balance Sheet, Profit and Loss statement, Cash Flow Statement, and Statement of Changes in Equity. The work here intentionally implements one bounded slice rather than shallowly attempting all four statements: identify direct account mappings and surface candidates for unresolved accounts without silently approving uncertain accounting decisions.
+The goal is to prototype one carefully scoped component of a larger agentic financial reporting platform. The selected component maps trial balance accounts to eligible chart-of-accounts records while identifying data-quality issues and escalating uncertain cases for human review.
 
-The current prototype does **not** generate the four financial statements, call an LLM, provide a web/API review interface, persist reviewer decisions, or post accounting entries. Those are possible future extensions, not implemented capabilities.
+The prototype combines deterministic mapping, hybrid retrieval, structured LLM recommendations, and a human-in-the-loop workflow. It does not attempt to implement the entire financial reporting lifecycle.
 
-## 2. Implemented workflow
+## 2. High-Level Architecture
 
-```text
-Supplied CSV/JSON inputs (preserved)
-              |
-              v
-Read-only input profiling
-              |
-              +----> output/data_quality_report.json
-              |
-              v
-Deterministic TB-to-COA mapping
-              |
-              +----> output/mapping_decisions.json / .csv
-              |
-              v
-Collect unresolved accounts from TB, prior TB and adjustments
-              |
-              v
-Build one searchable document per eligible COA posting account
-              |
-              +----------------------+---------------------+
-              |                                            |
-              v                                            v
-SentenceTransformer embeddings                    BM25 keyword retrieval
-              |                                            |
-              v                                            |
-          Chroma cosine ranking                          |
-              |                                            |
-              +----------------------+---------------------+
-                                     v
-                       Reciprocal Rank Fusion (RRF)
-                                     |
-                                     v
-                     Top-3 candidate records per query
-                                     |
-                                     v
-                    output/mapping_candidates.json
-                                     |
-                                     v
-                    Offline retrieval evaluation
-                                     |
-                                     v
-                    output/retrieval_evaluation.json
-```
+The processing flow is:
 
-### Implemented components
+1. Load the supplied financial input files.
+2. Profile the inputs for data-quality issues.
+3. Apply deterministic account-code mapping.
+4. Retrieve candidate COA records for unresolved accounts.
+5. Generate a structured Gemini recommendation using the retrieved candidates.
+6. Validate the recommendation against the eligible candidate set.
+7. Pause the LangGraph workflow for human review.
+8. Record the decision and generate a JSON report.
+9. Expose the workflow through FastAPI and use LangSmith for execution tracing when configured.
 
-1. **Input profiling (`scripts/profile_inputs.py`)** — reads the supplied financial inputs and writes a data-quality report. The observed run found 11 items: 5 high severity, 5 medium severity, and 1 informational finding. Findings are reported, not silently fixed.
-2. **Deterministic mapping (`scripts/run_exact_mapper.py`)** — checks source account identities against eligible COA records. The latest run processed 59 distinct account identities: 56 exact matches, 2 review-required decisions, and 1 unmapped account.
-3. **Candidate retrieval (`scripts/run_candidate_retrieval.py`)** — identifies unresolved accounts from the current TB, prior-period TB, and manual adjustment references. It indexed 58 eligible COA accounts and returned three candidates for each of three unresolved source accounts.
-4. **Dense retrieval** — `sentence-transformers/all-MiniLM-L6-v2` embeds account descriptions and source queries. Embeddings are normalized and stored in a local Chroma collection configured with cosine distance. The reported semantic similarity is derived from cosine distance as `1 - distance`; it is a ranking signal, not a calibrated probability.
-5. **Keyword retrieval and fusion** — `rank-bm25` ranks account documents lexically. Reciprocal Rank Fusion (RRF) combines the dense and BM25 ranks. The candidate output retains cosine similarity as a separate field and records BM25 rank and RRF score in its evidence.
-6. **Retrieval evaluation (`scripts/evaluate_retrieval.py`)** — calculates Precision@3, Recall@3, MRR@3, and a candidate-flag safety rate against a small provisional reference set.
+## 3. Input Data and Profiling
 
-## 3. Deterministic rules versus AI-assisted capabilities
+The prototype uses the supplied files:
 
-### Deterministic code is responsible for
+- `trial_balance.csv`
+- `chart_of_accounts.csv`
+- `prior_period_tb.csv`
+- `fx_rates.csv`
+- `manual_adjustments.json`
 
-- Preserving provided input files and identifying data-quality issues.
-- Comparing source account codes to COA codes and identifying review/unmapped conditions.
-- Excluding COA headers and accounts with children from eligible mapping targets.
-- Generating embeddings, running vector search, BM25 retrieval, and fusing rankings.
-- Calculating evaluation metrics from explicitly supplied relevance labels.
-- Keeping retrieved results in candidate-only / human-review-required states rather than treating similarity as approval.
+The profiling component identifies potential issues such as duplicate account-and-currency records, accounts absent from the current COA, incomplete FX-rate coverage, unbalanced manual journal entries, and ambiguous COA structures.
 
-### Current AI-related capability
+Profiling findings are reported rather than silently corrected. Mixed-currency amounts must not be treated as directly comparable without appropriate currency handling.
 
-The implemented model use is embedding-based semantic retrieval via Sentence Transformers. The current prototype does **not** make an LLM call to explain or choose a mapping. BM25, vector search, and RRF are retrieval components, not an LLM reasoning agent.
+## 4. Deterministic Mapping
 
-### Proposed future LLM capability (not implemented)
+The deterministic mapper compares source account codes with eligible COA records.
 
-A future optional LLM node could receive only a source description and a bounded list of retrieved COA candidates, then return a structured recommendation or abstain. Its proposed target would need deterministic validation against the allowed posting-account candidate list. It must never invent an account code, alter input data, or approve its own accounting decision. Any external model call would require approved handling of financial data and measured token/latency telemetry.
+It produces mapping decisions with statuses such as:
 
-## 4. Findings from the supplied inputs and safe handling
+- `exact_match`
+- `needs_review`
+- `unmapped`
 
-| Finding | Observed issue | Safe handling |
-|---|---|---|
-| Orphan current account | `9999 — Suspense - Unmapped` is not in the current COA | Keep unmapped/quarantined; do not select a candidate solely because it ranks highest. |
-| Prior-period account | `6905 — Sundry Operating Expenses` is absent from the current COA; `6900 — Other Operating Expenses` is a plausible candidate | Surface as a review-required candidate; require finance approval and period/COA-version confirmation. |
-| Adjustment account missing from COA | JE-005 references `6315` with a conference-travel memo | `6310 — Travel and Entertainment` is a relevant candidate, but remains unapproved pending review. |
-| Missing period-end FX rate | GBP appears in the TB but has no period-end rate in the supplied FX file | Do not silently substitute an average rate; block any downstream calculation requiring the missing closing rate. |
-| Unbalanced adjustment | JE-002 has a debit/credit difference of USD 3,500 | Quarantine the proposed entry and request corrected evidence; do not add a balancing plug. |
-| Intercompany semantics unclear | JE-008 debits and credits account 2170 for USD 320,000, but the lines do not supply sufficient entity/counterparty context | Require finance review; equal debit/credit totals alone do not prove semantic validity. |
-| COA category unresolved | Accounts 1150 and 2170 have `TBD` cash-flow categories | Flag the category for review rather than infer it from the account name. |
-| COA hierarchy issues | Header 1290 has no children; account 8000 is marked non-header but has children | Report for review before implementing statement roll-ups to avoid missing or double-counting balances. |
-| Duplicate account/currency rows | Account 6310 appears more than once in USD | Preserve both rows and investigate whether they are split postings or duplicate exports. |
+The mapper handles potentially ambiguous or structurally unsuitable COA records explicitly. Exact matching is used where appropriate; an account that cannot be mapped safely is not automatically assigned to a similar account.
 
-The supplied trial balance contains multiple currencies. Raw amounts from different currencies must not be added together to establish a functional-currency balance. FX policy and rate type must be agreed before statement translation or reconciliation.
+This layer provides a transparent baseline before retrieval or LLM recommendations are considered.
 
-## 5. Retrieval evaluation and interpretation
+## 5. Hybrid Candidate Retrieval
 
-The current evaluation set has only two ranking-evaluable queries. `9999` is excluded from ranking metrics because there is no verified target mapping for that generic suspense description. The provisional relevant candidates are `6900` for `6905` and `6310` for `6315`; these labels need independent finance validation.
+For unresolved accounts, the retrieval component identifies possible COA targets.
 
-Latest observed hybrid run:
+### Dense retrieval
+
+Sentence Transformers generates embeddings using `all-MiniLM-L6-v2`. ChromaDB stores and retrieves account representations using cosine-distance-based search.
+
+### Keyword retrieval
+
+BM25 ranks candidates based on lexical overlap between the source account information and COA descriptions.
+
+### Hybrid ranking
+
+Reciprocal Rank Fusion (RRF) combines the dense and keyword rankings. The two approaches complement one another: semantic retrieval can help with related terminology, while keyword retrieval can preserve useful lexical matches.
+
+COA records are represented at account level rather than split into arbitrary text chunks. Header accounts and accounts that have children are excluded as mapping targets.
+
+The resulting candidates provide supporting evidence for recommendations. Retrieval scores are ranking signals, not calibrated probabilities that a mapping is correct.
+
+## 6. LLM-Assisted Recommendation
+
+The recommendation node uses Gemini through `langchain-google-genai`. A Pydantic schema is used to structure the model output.
+
+The model considers the unresolved account and the retrieved candidates to recommend a mapping when the available evidence is sufficient. It can also abstain when the candidates do not support a defensible recommendation.
+
+A recommendation is not treated as an authoritative accounting decision. The implementation validates that the recommended target belongs to the retrieved candidate set before the workflow proceeds.
+
+## 7. LangGraph and Human-in-the-Loop Workflow
+
+The agent workflow consists of four primary nodes:
+
+1. **`retrieve_candidates`** — retrieves candidate COA accounts.
+2. **`recommend_candidates`** — requests a structured recommendation from Gemini.
+3. **`human_review`** — interrupts the workflow to request a human decision.
+4. **`finalize`** — records the decisions and writes the final report.
+
+The review process supports approve, reject, and quarantine actions. Approval is restricted to eligible retrieved candidates; a reviewer cannot approve an arbitrary account outside that candidate set.
+
+LangGraph uses an `InMemorySaver` checkpointer to maintain workflow state during the running application process. The FastAPI integration starts the workflow and resumes it after a review submission.
+
+This is an implemented prototype review flow, not a production-grade approval system. The in-memory checkpoint does not provide durable workflow recovery across application restarts.
+
+## 8. FastAPI and Observability
+
+FastAPI exposes the workflow through these endpoints:
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /` | Basic service information |
+| `GET /api/health` | Health check |
+| `POST /api/run` | Start a mapping-review workflow |
+| `POST /api/review` | Submit review decisions and resume the workflow |
+| `GET /api/latest` | Retrieve the latest saved report |
+
+LangSmith can trace workflow execution and model calls when the environment variables are configured. This supports inspection and debugging of the prototype; it does not by itself provide complete production monitoring or governance.
+
+## 9. Outputs and Evaluation
+
+The prototype writes machine-readable reports for data-quality profiling, deterministic mapping, candidate retrieval, retrieval evaluation, and completed agent-review results.
+
+Retrieval evaluation reports Precision@3, Recall@3, and MRR@3 against a small provisional reference dataset. The current benchmark contains two ranking-evaluable queries; account `9999` is excluded from ranking metrics because a verified target mapping is unavailable.
+
+The observed results are:
 
 | Metric | Result |
 |---|---:|
 | Precision@3 | 0.3333 |
 | Recall@3 | 1.0000 |
 | MRR@3 | 1.0000 |
-| Candidate flag safety rate | 100% |
+| Candidate safety rate | 100% |
 
-Dense-only baseline and hybrid retrieval produced the same reported metrics on this tiny benchmark. BM25 changed some lower candidate ranks, but no overall improvement was demonstrated. The current benchmark is a smoke test, not an unbiased holdout or evidence of production accuracy. The “candidate safety rate” checks output flags only; it does not mean a real human approval workflow exists.
+These results demonstrate a limited prototype evaluation, not production accuracy. The reference labels require independent finance review, and the benchmark must be expanded to support meaningful conclusions.
 
-A stronger evaluation should use a larger, independently finance-reviewed gold set. It should measure top-1/top-k relevance, abstention behavior for accounts with insufficient evidence, reviewer overturn rate when review functionality exists, and latency on repeated runs. Similarity values should not be presented as mapping probabilities.
+## 10. Controls and Failure Handling
 
-## 6. Auditability and limitations
+The implementation is designed around these principles:
 
-The current artifacts preserve source account codes, source account names when available, source file/adjustment references, candidate COA codes/names, retrieval evidence, rank information, and review-required flags. They do not yet implement complete journal-line-to-statement-cell lineage because statement generation is outside the implemented slice.
+- Preserve supplied input data rather than silently changing it.
+- Flag unknown, ambiguous, or structurally unsuitable accounts.
+- Treat source files and retrieved content as data, not instructions to the model.
+- Restrict LLM recommendations and human approvals to the eligible candidate set.
+- Allow unresolved cases to be rejected or quarantined.
+- Avoid using similarity scores as proof of accounting correctness.
+- Keep journal-entry validation and FX requirements distinct from account mapping.
 
-The current prototype is a local scripted workflow. It does not include a deployed API, persistent approval/rejection workflow, LangGraph orchestration, LLM recommendation node, RAGAS evaluation, or statement generation. These should not be described as implemented in the README or demonstration.
+## 11. Limitations and Future Work
 
-## 7. Recommended next increments
+This prototype does not generate complete financial statements, post accounting entries, or perform end-to-end ERP integration.
 
-1. Increase the independently reviewed retrieval evaluation set and compare dense-only with hybrid retrieval on the same cases.
-2. Add structured LLM recommendations only if evidence supports the need; enforce a candidate allowlist, Pydantic validation, explicit abstention, and human approval.
-3. Add a persistent review ledger with reviewer identity, decision, rationale, timestamp, run ID, and COA version.
-4. Add API/UI workflows only after the input/output contracts and approval process are agreed.
-5. Implement deterministic adjustment validation, FX translation, consolidation, statement construction, and reconciliation as separately testable modules in a future full system.
+It does not yet include a persistent audit database, durable workflow checkpoints, role-based access control, a production frontend, or RAGAS evaluation. The evaluation dataset is small, and the review API is intended for demonstration rather than production use.
 
-## 8. Clarifying questions for finance owners
-
-1. What are the approved FX rate types by statement and account class, and how must a missing GBP closing rate be resolved?
-2. Who is authorized to approve non-exact account mappings and unresolved cash-flow classifications, and should all such mappings remain review-required?
-3. Which entity, counterparty, and reciprocal-entry fields are required to validate intercompany journals and eliminations?
+Potential next steps include expanding the finance-reviewed benchmark, evaluating recommendation groundedness and abstention, adding durable workflow state and review auditing, strengthening API security, and implementing additional validated slices for FX translation, consolidation, reconciliation, and financial statement generation.
